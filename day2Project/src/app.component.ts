@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {User} from "./app.model";
 
 @Component({
     selector: "app-root",
@@ -15,5 +16,15 @@ export class AppComponent {
 
     onMyEvent(val:number) {
         this.myCount = val;
+    }
+
+    users: User[] = [];
+
+    constructor() {
+        this.users = [
+            new User("A","B"),
+            new User("C","D"),
+            new User("X","Y")
+        ]
     }
 }

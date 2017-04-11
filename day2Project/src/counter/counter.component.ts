@@ -5,7 +5,7 @@ import {Component, Input, Output, EventEmitter} from "@angular/core";
     template: `<h3>This is counter component </h3>
                  <h2>value of count is {{count}}</h2>
                  <button (click)="incrementCounter()">++Count</button>
-                 <input type="number" [value]="count">
+                 <input type="number" [(ngModel)]="count">
                `
 })
 export class CounterComponent{

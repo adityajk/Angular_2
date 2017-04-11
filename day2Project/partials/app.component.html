@@ -1,6 +1,21 @@
 <h1>Welcome to {{pageHeading}}</h1>
 <h1>MyCount: {{myCount}}</h1>
 <button (click)="incrementMyCount()">MyCount ++</button>
+
+<table border="1">
+    <tr>
+        <th>Fname</th>
+        <th>Lname</th>
+    </tr>
+    <tr *ngFor="let u of users">
+        <td>{{u.fname}}</td>
+        <td>{{u.lname}}</td>
+    </tr>
+    <tr *ngIf="!users.length == 0">
+        <td colspan="2"> Burrraaahhh !! </td>
+    </tr>
+</table>
+
 <hr>
 <!--<counter [count]="myCount"></counter>-->
 <hr>
