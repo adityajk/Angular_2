@@ -1,0 +1,26 @@
+{
+  "name": "day1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Wells Fargo\" ",
+    "lite": "lite-server",
+    "ts": "tsc -w",
+    "webpk": "webpack --watch",
+    "start": "concurrently \"npm run lite\" \"npm run webpk\" "
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "primeng": "^4.0.0-rc.2",
+    "typescript": "^2.2.2",
+    "webpack": "^2.3.3"
+  },
+  "devDependencies": {
+    "concurrently": "^3.4.0",
+    "lite-server": "^2.3.0",
+    "ts-loader": "^2.0.3"
+  }
+}
