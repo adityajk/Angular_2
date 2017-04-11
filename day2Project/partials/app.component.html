@@ -1,0 +1,7 @@
+<h1>Welcome to {{pageHeading}}</h1>
+<h1>MyCount: {{myCount}}</h1>
+<button (click)="incrementMyCount()">MyCount ++</button>
+<hr>
+<!--<counter [count]="myCount"></counter>-->
+<hr>
+<counter [init]="myCount" (myEvent)="onMyEvent($event)"></counter>
