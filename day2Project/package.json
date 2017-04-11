@@ -8,6 +8,11 @@
     "start": "concurrently \"npm run lite\" \"npm run webpk\" "
   },
   "dependencies": {
+    "@angular/common": "^4.0.1",
+    "@angular/compiler": "^4.0.1",
+    "@angular/core": "^4.0.1",
+    "@angular/platform-browser": "^4.0.1",
+    "@angular/platform-browser-dynamic": "^4.0.1",
     "@types/es6-shim": "^0.31.32",
     "es6-shim": "^0.35.3",
     "reflect-metadata": "^0.1.10",
