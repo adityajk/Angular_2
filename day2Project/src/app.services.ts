@@ -24,4 +24,8 @@ export class AppService {
     deleteUser(id:string) {
         return this.ht.delete(this.restUrl +"/" + id);
     }
+
+    updateUser(newU: User) {
+        return this.ht.put(this.restUrl , newU, this.options );
+    }
 }

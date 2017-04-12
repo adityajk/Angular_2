@@ -5,6 +5,7 @@
     <input placeholder="Enter Fname" type="text" [(ngModel)]="newUser.fname" name="txtFname"><br>
     <input placeholder="Enter Lname" type="text" [(ngModel)]="newUser.lname" name="txtLname"><br>
     <button (click)="addUser()">Add User</button>
+    <button (click)="updateUser()">Update User</button>
 
 </form>
 
@@ -13,12 +14,13 @@
     <tr>
         <th>Fname</th>
         <th>Lname</th>
-        <th>Action</th>
+        <th colspan="2">Action</th>
     </tr>
     <tr *ngFor="let u of users; let i = index">
         <td>{{u.fname}}</td>
         <td>{{u.lname}}</td>
         <td><button (click)= "deleteUser(u.id, i)">Delete</button></td>
+        <td><button (click)= "editUser(u)">Edit</button></td>
     </tr>
     <tr *ngIf="users.length == 0">
         <td colspan="2"> Burrraaahhh !! </td>
@@ -29,3 +31,23 @@
 <!--<counter [count]="myCount"></counter>-->
 <hr>
 <counter [init]="myCount" (myEvent)="onMyEvent($event)"></counter>
+
+<hr>
+<label for="name">Name</label>
+
+<input type="text" id="name" class="form-control"
+       required minlength="4" maxlength="24"
+       name="name" [(ngModel)]="hero.name" #name="ngModel" >
+
+<div *ngIf="name.errors && (name.dirty || name.touched)"
+     class="alert alert-danger">
+    <div [hidden]="!name.errors.required">
+        Name is required
+    </div>
+    <div [hidden]="!name.errors.minlength">
+        Name must be at least 4 characters long.
+    </div>
+    <div [hidden]="!name.errors.maxlength">
+        Name cannot be more than 24 characters long.
+    </div>
+</div>

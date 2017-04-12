@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {User} from "./app.model";
 import {AppService} from "./app.services";
+import {Hero} from "./app.hero";
 
 @Component({
     selector: "app-root",
@@ -20,6 +21,7 @@ export class AppComponent {
     }
 
     users: User[] = [];
+    hero: Hero = new Hero(1, "", "", "");
 
     newUser: User = new User("", "", "");
 
@@ -52,5 +54,19 @@ export class AppComponent {
             (err) => console.log("Delete error"),
             () => console.log("Delete Complete")
         );
+    }
+
+    editUser(selectedUser:User) {
+        let cp = Object.assign({}, selectedUser);
+        this.newUser = cp;
+    }
+
+    updateUser() {
+        this.a.updateUser(this.newUser).subscribe(
+            (respData) => console.log("updated...:)"),
+            (err) => console.log("Add Error"),
+            () => console.log("Add Completed")
+        )
+        this.newUser = new User("", "", "");
     }
 }
