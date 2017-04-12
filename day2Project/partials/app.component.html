@@ -1,17 +1,26 @@
 <h1>Welcome to {{pageHeading}}</h1>
 <h1>MyCount: {{myCount}}</h1>
 <button (click)="incrementMyCount()">MyCount ++</button>
+<form>
+    <input placeholder="Enter Fname" type="text" [(ngModel)]="newUser.fname" name="txtFname"><br>
+    <input placeholder="Enter Lname" type="text" [(ngModel)]="newUser.lname" name="txtLname"><br>
+    <button (click)="addUser()">Add User</button>
+
+</form>
+
 
 <table border="1">
     <tr>
         <th>Fname</th>
         <th>Lname</th>
+        <th>Action</th>
     </tr>
-    <tr *ngFor="let u of users">
+    <tr *ngFor="let u of users; let i = index">
         <td>{{u.fname}}</td>
         <td>{{u.lname}}</td>
+        <td><button (click)= "deleteUser(u.id, i)">Delete</button></td>
     </tr>
-    <tr *ngIf="!users.length == 0">
+    <tr *ngIf="users.length == 0">
         <td colspan="2"> Burrraaahhh !! </td>
     </tr>
 </table>

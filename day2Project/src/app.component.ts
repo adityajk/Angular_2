@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {User} from "./app.model";
+import {AppService} from "./app.services";
 
 @Component({
     selector: "app-root",
@@ -20,11 +21,36 @@ export class AppComponent {
 
     users: User[] = [];
 
-    constructor() {
-        this.users = [
-            new User("A","B"),
-            new User("C","D"),
-            new User("X","Y")
-        ]
+    newUser: User = new User("", "", "");
+
+    constructor(private a:AppService) {
+
+        this.a.getAllUsers().subscribe(
+            (respData) => {this.users = respData.json(); console.log(respData)},
+            (errData) => console.log("Error", errData),
+            () => console.log("Completed")
+        );
+
+       //let a:AppService = new AppService();
+       //this.users = a.getAllUsers();
+    }
+
+    addUser() {
+        this.a.addNewuser(this.newUser).subscribe(
+            (respData) => this.users.push(respData.json()),
+            (err) => console.log("Add Error"),
+            () => console.log("Add Completed")
+        )
+        this.newUser = new User("", "", "");
+    }
+
+    deleteUser(id:string, idx:number) {
+        this.a.deleteUser(id).subscribe(
+            () => {console.log("Delete Success");
+                    this.users.splice(idx, 1);
+                    },
+            (err) => console.log("Delete error"),
+            () => console.log("Delete Complete")
+        );
     }
 }
